@@ -1,5 +1,5 @@
 // Test ID: IIDSAT
-import { useFetcher, useLoaderData } from "react-router";
+import { useFetcher, useLoaderData, LoaderFunctionArgs } from "react-router";
 
 import OrderItem from "./OrderItem";
 
@@ -11,9 +11,10 @@ import {
 } from "../../utils/helpers";
 import { useEffect } from "react";
 import UpdateOrder from "./UpdateOrder";
+import { Order as OrderType, PizzaItem } from "../../types";
 
 function Order() {
-  const order = useLoaderData();
+  const order: OrderType = useLoaderData();
 
   const fetcher = useFetcher();
 
@@ -70,7 +71,7 @@ function Order() {
             key={item.pizzaId}
             isLoadingIngredients={fetcher.state === "loading"}
             ingredients={
-              fetcher?.data?.find((el) => el.id === item.pizzaId)
+              fetcher?.data?.find((el: PizzaItem) => el.id === item.pizzaId)
                 ?.ingredients ?? []
             }
           />
@@ -91,13 +92,13 @@ function Order() {
         </p>
       </div>
 
-      {!priority && <UpdateOrder order={order} />}
+      {!priority && <UpdateOrder />}
     </div>
   );
 }
 
-export async function loader({ params }) {
-  const order = await getOrder(params.orderId);
+export async function loader({ params }: LoaderFunctionArgs) {
+  const order = await getOrder(params.orderId as string);
 
   return order;
 }

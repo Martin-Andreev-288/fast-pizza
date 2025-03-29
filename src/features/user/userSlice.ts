@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getAddress } from '../../services/apiGeocoding';
+import { Status, UserState } from '../../types';
 
 function getPosition() {
   return new Promise(function (resolve, reject) {
@@ -27,12 +28,15 @@ export const fetchAddress = createAsyncThunk(
   },
 );
 
-const initialState = {
-  username: '',
-  status: 'idle',
-  position: {},
-  address: '',
-  error: '',
+const initialState: UserState = {
+  username: "",
+  status: Status.idle,
+  position: {
+    latitude: undefined,
+    longitude: undefined,
+  },
+  address: "",
+  error: "",
 };
 
 const userSlice = createSlice({
@@ -45,16 +49,16 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) =>
     builder
-      .addCase(fetchAddress.pending, (state, action) => {
-        state.status = 'loading';
+      .addCase(fetchAddress.pending, (state, _action) => {
+        state.status = Status.loading;
       })
       .addCase(fetchAddress.fulfilled, (state, action) => {
         state.position = action.payload.position;
         state.address = action.payload.address;
-        state.status = 'idle';
+        state.status = Status.idle;
       })
-      .addCase(fetchAddress.rejected, (state, action) => {
-        state.status = 'error';
+      .addCase(fetchAddress.rejected, (state, _action) => {
+        state.status = Status.error;
         state.error =
           'There was a problem getting your address. Make sure to fill this field!';
       }),

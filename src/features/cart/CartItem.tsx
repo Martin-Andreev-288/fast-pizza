@@ -1,10 +1,15 @@
-import { useSelector } from 'react-redux';
-import { formatCurrency } from '../../utils/helpers';
-import DeleteItem from './DeleteItem';
-import UpdateItemQuantity from './UpdateItemQuantity';
-import { getCurrentQuantityById } from './cartSlice';
+import { useSelector } from "react-redux";
+import { formatCurrency } from "../../utils/helpers";
+import DeleteItem from "./DeleteItem";
+import UpdateItemQuantity from "./UpdateItemQuantity";
+import { getCurrentQuantityById } from "./cartSlice";
+import { CartItem as CartSingleItem } from "../../types";
 
-function CartItem({ item }) {
+type CartItemProps = {
+  item: CartSingleItem;
+};
+
+function CartItem({ item }: CartItemProps) {
   const { pizzaId, name, quantity, totalPrice } = item;
 
   const currentQuantity = useSelector(getCurrentQuantityById(pizzaId));

@@ -2,7 +2,8 @@ import { useRouteError } from "react-router";
 import LinkButton from "./LinkButton";
 
 function Error() {
-  const error = useRouteError();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const error: any = useRouteError();
 
   return (
     <div>

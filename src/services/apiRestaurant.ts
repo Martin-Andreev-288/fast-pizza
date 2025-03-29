@@ -1,3 +1,5 @@
+import { Order } from "../types";
+
 const API_URL = "https://react-fast-pizza-api.onrender.com/api";
 
 export async function getMenu() {
@@ -11,7 +13,7 @@ export async function getMenu() {
   return data;
 }
 
-export async function getOrder(id) {
+export async function getOrder(id: string) {
   const res = await fetch(`${API_URL}/order/${id}`);
   if (!res.ok) throw Error(`Couldn't find order #${id}`);
 
@@ -19,7 +21,7 @@ export async function getOrder(id) {
   return data;
 }
 
-export async function createOrder(newOrder) {
+export async function createOrder(newOrder: Partial<Order>): Promise<Order> {
   try {
     const res = await fetch(`${API_URL}/order`, {
       method: "POST",
@@ -37,7 +39,7 @@ export async function createOrder(newOrder) {
   }
 }
 
-export async function updateOrder(id, updateObj) {
+export async function updateOrder(id: string, updateObj: object) {
   try {
     const res = await fetch(`${API_URL}/order/${id}`, {
       method: "PATCH",
@@ -50,6 +52,7 @@ export async function updateOrder(id, updateObj) {
     if (!res.ok) throw Error();
     // We don't need the data, so we don't return anything
   } catch (err) {
+    console.log(err);
     throw Error("Failed updating your order");
   }
 }

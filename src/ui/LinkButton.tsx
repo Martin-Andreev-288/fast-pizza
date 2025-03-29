@@ -1,6 +1,11 @@
-import { Link, useNavigate } from "react-router";
+import { Link, To, useNavigate } from "react-router";
 
-function LinkButton({ children, to }) {
+type LinkButtonProps = {
+  children: React.ReactNode;
+  to: To;
+};
+
+function LinkButton({ children, to }: LinkButtonProps) {
   const navigate = useNavigate();
   const className = "text-sm text-blue-500 hover:text-blue-600 hover:underline";
 

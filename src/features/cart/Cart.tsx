@@ -1,12 +1,13 @@
-import LinkButton from '../../ui/LinkButton';
-import Button from '../../ui/Button';
-import CartItem from './CartItem';
-import EmptyCart from './EmptyCart';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearCart, getCart } from './cartSlice';
+import LinkButton from "../../ui/LinkButton";
+import Button from "../../ui/Button";
+import CartItem from "./CartItem";
+import EmptyCart from "./EmptyCart";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getCart } from "./cartSlice";
+import { RootState } from "../../store/store";
 
 function Cart() {
-  const username = useSelector((state) => state.user.username);
+  const username = useSelector((state: RootState) => state.user.username);
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
 

@@ -1,8 +1,12 @@
-import { useDispatch } from 'react-redux';
-import Button from '../../ui/Button';
-import { deleteItem } from './cartSlice';
+import { useDispatch } from "react-redux";
+import Button from "../../ui/Button";
+import { deleteItem } from "./cartSlice";
 
-function DeleteItem({ pizzaId }) {
+type DeleteItemProps = {
+  pizzaId: number;
+};
+
+function DeleteItem({ pizzaId }: DeleteItemProps) {
   const dispatch = useDispatch();
 
   return (
