@@ -1,8 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getAddress } from '../../services/apiGeocoding';
 import { Status, UserState } from '../../types';
 
-function getPosition() {
+function getPosition(): Promise<GeolocationPosition> {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
@@ -43,7 +44,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    updateName(state, action) {
+    updateName(state, action: PayloadAction<string>) {
       state.username = action.payload;
     },
   },
