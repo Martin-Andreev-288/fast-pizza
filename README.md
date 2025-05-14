@@ -1,6 +1,6 @@
 # react-pizza-pro
 
-**Disclaimer**: This repository is a TypeScript version of my original [React project](https://github.com/Martin-Andreev-288/react-pizza-pro), which is based on [The Ultimate React Course 2024: React, Next.js, Redux & More](https://www.udemy.com/course/the-ultimate-react-course/) by Jonas Schmedtmann.
+**Disclaimer**: This repository is a TypeScript version of my original [React project](https://github.com/Martin-Andreev-288/react-pizza-pro), which is based on [The Ultimate React Course](https://www.udemy.com/course/the-ultimate-react-course/) by Jonas Schmedtmann.
 <br />The primary goal of this repository was to migrate the original project from JavaScript to TypeScript while preserving its functionality. No additional features or major changes were made beyond improving type safety and TypeScript adoption.
 <br />All credit for the original design and concepts goes to Jonas Schmedtmann. This repository serves as my implementation of the project following the course, now adapted to TypeScript.
 
@@ -45,3 +45,9 @@ npm run dev
 - **Order Info Page**
 <br />Track your order status here. See how many minutes are left until delivery, check the pizza details, and view the total payment due. You can also upgrade your order to priority with the "Make Priority" button. This page is also accessible by searching an order code.
 <img src="./src/assets/orderInfoPage.png"/>
+
+## Project Tool Links
+
+- [GitHub Link](https://github.com/Martin-Andreev-288/fast-pizza)
+- [Project deploy in Vercel](https://fast-pizza-8rtt.vercel.app/)
+- [Demo Video](https://youtu.be/qLV75hrZ4-w)
